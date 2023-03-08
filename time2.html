@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body >
+    enter hours:
+    <select id="a"></select>
+    enter minutes:
+    <select id="b"></select>
+    original angle is:
+    <input type="text" id="c">
+    other angle is:
+    <input type="text" id="d">
+    <button onclick="getangle()">angle</button>
+    <script>
+        select=document.getElementById('a');
+        for(var i=1;i<=12;i++)
+        {
+            var opt=document.createElement('option');
+            opt.innerHTML=i;
+            opt.value=i;
+            select.appendChild(opt);
+        }
+        s=document.getElementById('b');
+        for(var i=0;i<=59;i++)
+        {
+            var opt=document.createElement('option');
+            opt.innerHTML=i;
+            opt.value=i;
+            s.appendChild(opt);
+        }
+        function getangle()
+        {
+            hour1=document.getElementById('a').value;
+            min1=document.getElementById('b').value;
+            tm=min1*6;
+            t=min1/60 ;
+            console.log(t);
+            t = t + parseFloat(hour1);
+            console.log(t);
+            t = t*30;
+            if(min1/5 > hour1)
+            {
+                var angle1=tm-t;
+                var angle2=360-angle1;
+            }
+            else
+            {
+                var angle1=360-t+tm;
+                var angle2=360-angle1;
+            }
+            document.getElementById('c').value=angle1;
+            document.getElementById('d').value=angle2;
+        }
+    </script>
+</body>
+</html>
